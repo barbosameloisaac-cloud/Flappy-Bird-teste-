@@ -1,0 +1,286 @@
+/* ========== RESET & BASE ========== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a1a;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  user-select: none;
+}
+
+/* ========== SCREENS ========== */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.screen.active {
+  display: flex;
+}
+
+/* ========== STAR BACKGROUND ========== */
+.star-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, #1a0533 0%, #0a0a1a 60%);
+  overflow: hidden;
+}
+.star-bg::before,
+.star-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 25% 40%, #adf 100%, transparent),
+    radial-gradient(1px 1px at 40% 10%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 55% 60%, #fdf 100%, transparent),
+    radial-gradient(1px 1px at 70% 30%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 85% 75%, #adf 100%, transparent),
+    radial-gradient(1px 1px at 15% 80%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 60% 85%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 90% 10%, #fdf 100%, transparent),
+    radial-gradient(1px 1px at 35% 65%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 78% 50%, #aaf 100%, transparent),
+    radial-gradient(2px 2px at 48% 35%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 5%  55%, #adf 100%, transparent),
+    radial-gradient(1px 1px at 95% 45%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 22% 22%, #ffd 100%, transparent),
+    radial-gradient(1px 1px at 67% 67%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 33% 88%, #adf 100%, transparent),
+    radial-gradient(1px 1px at 80% 20%, #fff 100%, transparent),
+    radial-gradient(2px 2px at 12% 95%, #fdf 100%, transparent),
+    radial-gradient(1px 1px at 50% 5%,  #fff 100%, transparent);
+}
+.star-bg::after {
+  opacity: 0.5;
+  transform: translate(30px, 20px);
+  background-image:
+    radial-gradient(1px 1px at 18% 33%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 42% 72%, #adf 100%, transparent),
+    radial-gradient(1px 1px at 63% 18%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 87% 55%, #fdf 100%, transparent),
+    radial-gradient(1px 1px at 7%  42%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 29% 58%, #adf 100%, transparent),
+    radial-gradient(2px 2px at 74% 82%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 51% 47%, #ffd 100%, transparent),
+    radial-gradient(1px 1px at 93% 28%, #fff 100%, transparent),
+    radial-gradient(1px 1px at 16% 70%, #adf 100%, transparent);
+}
+
+/* ========== START SCREEN ========== */
+.start-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+}
+.game-title {
+  font-size: clamp(40px, 12vw, 80px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1;
+  color: #fff;
+  text-shadow: 0 0 20px #7f5af0, 0 0 40px #7f5af0;
+}
+.game-title span {
+  color: #f7c948;
+  text-shadow: 0 0 20px #f7c948, 0 0 40px #e09800;
+}
+.subtitle {
+  color: #adb8d0;
+  font-size: clamp(13px, 3.5vw, 18px);
+}
+.rocket-preview {
+  font-size: clamp(50px, 14vw, 90px);
+  animation: float 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 16px #7f5af0);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50%        { transform: translateY(-14px) rotate(5deg); }
+}
+.controls-hint {
+  color: #7b8ab0;
+  font-size: clamp(11px, 3vw, 14px);
+  margin-top: 4px;
+}
+.best-display {
+  color: #f7c948;
+  font-size: clamp(13px, 3.5vw, 17px);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ========== BUTTONS ========== */
+.btn-primary {
+  background: linear-gradient(135deg, #7f5af0, #5a2eb0);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  font-size: clamp(15px, 4vw, 20px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px #7f5af088;
+  transition: transform 0.1s, box-shadow 0.1s;
+  touch-action: manipulation;
+}
+.btn-primary:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 10px #7f5af044;
+}
+.btn-secondary {
+  background: transparent;
+  color: #adb8d0;
+  border: 2px solid #3a3a5a;
+  border-radius: 50px;
+  padding: 12px 32px;
+  font-size: clamp(13px, 3.5vw, 17px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  touch-action: manipulation;
+}
+.btn-secondary:hover { border-color: #7f5af0; color: #fff; }
+
+/* ========== GAME SCREEN ========== */
+#screen-game {
+  background: #0a0a1a;
+}
+#gameCanvas {
+  display: block;
+  touch-action: none;
+}
+#hud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  pointer-events: none;
+}
+#score-display {
+  color: #fff;
+  font-size: clamp(28px, 8vw, 48px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 0 12px #7f5af0, 0 2px 4px #0005;
+  pointer-events: none;
+}
+#btn-pause {
+  pointer-events: all;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  touch-action: manipulation;
+}
+#btn-pause:hover { background: rgba(255,255,255,0.2); }
+
+/* ========== PAUSE OVERLAY ========== */
+#pause-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,26,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+#pause-overlay.hidden { display: none; }
+.pause-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 40px;
+  background: #12122a;
+  border: 2px solid #7f5af0;
+  border-radius: 20px;
+  box-shadow: 0 0 40px #7f5af055;
+}
+.pause-box h2 {
+  color: #f7c948;
+  font-size: 32px;
+  letter-spacing: 4px;
+}
+
+/* ========== GAME OVER SCREEN ========== */
+.gameover-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+}
+.gameover-title {
+  font-size: clamp(36px, 10vw, 64px);
+  font-weight: 900;
+  color: #ff6b6b;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px #ff6b6b88;
+}
+.crash-icon {
+  font-size: clamp(48px, 14vw, 80px);
+  animation: shake 0.5s ease-out 1;
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-8px) rotate(-5deg); }
+  40%      { transform: translateX(8px) rotate(5deg); }
+  60%      { transform: translateX(-6px); }
+  80%      { transform: translateX(6px); }
+}
+.score-box {
+  background: #12122a;
+  border: 2px solid #2a2a4a;
+  border-radius: 16px;
+  padding: 20px 36px;
+  width: clamp(220px, 60vw, 320px);
+}
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  color: #adb8d0;
+  font-size: clamp(15px, 4vw, 19px);
+  padding: 6px 0;
+}
+.score-row span:last-child {
+  font-weight: 700;
+  color: #fff;
+}
+.score-row.best span:last-child { color: #f7c948; }
+
+/* ========== UTILITY ========== */
+.hidden { display: none !important; }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Sky Hopper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TELA INICIAL -->
+  <div id="screen-start" class="screen active">
+    <div class="star-bg" id="star-bg-start"></div>
+    <div class="start-content">
+      <h1 class="game-title">SKY<br><span>HOPPER</span></h1>
+      <p class="subtitle">Um piloto espacial em apuros!</p>
+      <div class="rocket-preview">&#x1F680;</div>
+      <button id="btn-start" class="btn-primary">INICIAR</button>
+      <div class="controls-hint">
+        <p>&#x2328;&#xFE0F; Espa&ccedil;o / &uarr; &nbsp;|&nbsp; &#x1F5B1;&#xFE0F; Clique &nbsp;|&nbsp; &#x1F4F1; Toque</p>
+      </div>
+      <div class="best-display" id="start-best">Melhor: 0</div>
+    </div>
+  </div>
+
+  <!-- TELA DE JOGO -->
+  <div id="screen-game" class="screen">
+    <canvas id="gameCanvas"></canvas>
+    <div id="hud">
+      <span id="score-display">0</span>
+      <button id="btn-pause">&#x23F8;</button>
+    </div>
+    <div id="pause-overlay" class="hidden">
+      <div class="pause-box">
+        <h2>PAUSADO</h2>
+        <button id="btn-resume" class="btn-primary">CONTINUAR</button>
+        <button id="btn-quit" class="btn-secondary">SAIR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TELA DE FIM -->
+  <div id="screen-gameover" class="screen">
+    <div class="star-bg" id="star-bg-over"></div>
+    <div class="gameover-content">
+      <h2 class="gameover-title">GAME OVER</h2>
+      <div class="crash-icon">&#x1F4A5;</div>
+      <div class="score-box">
+        <div class="score-row"><span>Pontos</span><span id="final-score">0</span></div>
+        <div class="score-row best"><span>Melhor</span><span id="best-score">0</span></div>
+      </div>
+      <button id="btn-restart" class="btn-primary">JOGAR NOVAMENTE</button>
+      <button id="btn-menu" class="btn-secondary">MENU</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
